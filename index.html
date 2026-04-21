@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: "baloo2";
+                src: url("../baloo2.ttf") format("truetype");
+            }
+            
+            div, span, input, button {
+                font-family: "baloo2";
+                color: #ffffff;
+                border-radius: 10px;
+                border: none;
+                outline-width: 5px;
+                outline-color: #ffffff;
+            }
+            
+            html, body {
+                background-color: #002b57;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                overflow: hidden;
+            }
+            
+            #app {
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+                width: 100vw;
+                height: 100vh;
+            }
+            
+            #app.shifted {
+                transform: translateY(-100vh);
+            }
+            
+            select, ::picker(select) {
+                appearance: base-select;
+            }
+            
+            button, select {
+                background-color: #368ada;
+                outline-style: solid;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                min-width: 150px;
+                min-height: 25px;
+            }
+            
+            button:hover, select:hover {
+                background-color: #60acf4;
+            }
+            
+            button:hover {
+                transform: scale(1.1);
+            }
+            
+            button:active, select:active {
+                background-color: #1d78ce;
+            }
+            
+            button:active {
+                transform: scale(0.9);
+            }
+            
+            button:disabled {
+                background-color: #1d78ce;
+                cursor: not-allowed;
+            }
+            
+            input {
+                background-color: #00488f;
+                outline-style: solid;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            
+            input:focus {
+                background-color: #005bb7;
+                transform: scale(1.1);
+            }
+            
+            input::placeholder {
+                color: #ffffff;
+            }
+            
+            .scene {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                width: 100vw;
+                height: 100vh;
+            }
+            
+            #sceneLogin {
+                position: absolute;
+            }
+            
+            #sceneRow {
+                position: absolute;
+                /* top: 100vh; */
+                left: 0px;
+                display: flex;
+                flex-direction: row;
+                /* width: 100vw; */
+                height: 100vh;
+                transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            }
+            
+            #sceneButtons {
+                position: absolute;
+                display: flex;
+                gap: 20px;
+                /* top: calc(200vh - 100px); */
+                top: calc(100vh - 100px);
+            }
+            
+            #sceneButtons button {
+                min-width: 100px;
+            }
+            
+            .long {
+                min-width: 300px;
+            }
+            
+            .short {
+                max-width: 75px;
+                font-size: larger;
+            }
+            
+            .user {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .user .left, .user .right {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .user .center {
+                flex: 1;
+                text-align: center;
+            }
+            
+            .user img {
+                max-width: 28px;
+                max-height: 20px;
+            }
+            
+            /* Code from cssloaders.github.io */
+            .loading {
+                width: 48px;
+                height: 48px;
+                border: 5px solid #ffffff;
+                border-bottom-color: transparent;
+                border-radius: 50%;;
+                display: inline-block;
+                box-sizing: border-box;
+                animation: rotation 1s linear infinite;
+            }
+            
+            @keyframes rotation {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            
+            .hhalf {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                width: 50%;
+                height: 100%;
+            }
+            
+            .vhalf {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+                height: 50%;
+            }
+            
+            #awardsGrid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                grid-auto-rows: auto;
+                place-items: center;
+                width: calc(100% - 60px);
+                max-height: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            
+            #awardsGrid img {
+                max-width: 64px;
+                max-height: 64px;
+            }
+            
+            .award {
+                position: relative;
+            }
+            
+            .award span {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: #00488f73;
+                min-width: 50px;
+                text-align: center;
+            }
+            
+            #results {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px;
+                min-height: 40px;
+                max-height: calc(100vh - 600px);
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            
+            .horizontal {
+                flex-direction: row;
+            }
+            
+            .leftAlign span {
+                width: 100%;
+                text-align: left;
+            }
+            
+            .rightAlign span {
+                width: 100%;
+                text-align: right;
+            }
+            
+            .topAlign {
+                justify-content: start;
+            }
+            
+            .bottomAlign {
+                justify-content: end;
+            }
+            
+            .compact {
+                gap: 3px;
+            }
+            
+            .background {
+                z-index: 0;
+                width: 300vw;
+                height: 300vh;
+                position: absolute;
+                background: repeating-linear-gradient(
+                    45deg,
+                    #002041,
+                    #002041 0%,
+                    #002041 25%,
+                    #002b57 25%,
+                    #002b57 50%
+                );
+                background-size: 80px 80px;
+                animation: slide 5s linear infinite;
+            }
+            
+            @keyframes slide {
+                0% {
+                    background-position: 0px 0px;
+                }
+                
+                100% {
+                    background-position: -80px 80px;
+                }
+            }
+        </style>
+        
+        <title>GOOB</title>
+        <link rel="icon" type="image/svg" href="goob.svg">
+        
+        <meta property="og:title" content="GOOB">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="Tools for Goober Dash by Winterpixel Games">
+    </head>
+    
+    <body>
+        <div class="background"></div>
+        <div id="app">
+            <!-- <div id="sceneLogin" class="scene">
+                <span>SIGN IN</span>
+                <input type="text" id="email" placeholder="EMAIL...">
+                <input type="password" id="password" placeholder="PASSWORD...">
+                <button id="login">LOG IN</button>
+                <span id="loginMessage">we do not collect your creds</span>
+            </div> -->
+            
+            <div id="sceneRow">
+                <div id="scenePlayers" class="horizontal scene">
+                    <div id="playerSearch" class="hhalf">
+                        <label for="uuidOrUsername">UUID or Username</label>
+                        <input type="text" id="uuidOrUsername" class="long" value="00000000-0000-0000-0000-000000000001">
+                        <button id="searchPlayer">Search</button>
+                        <span>Results</span>
+                    </div>
+                    <div id="playerInfo" class="hhalf">
+                        <div class="horizontal vhalf">
+                            <div class="bottomAlign compact rightAlign hhalf">
+                                <span>Username:</span>
+                                <span>UUID / User ID:</span>
+                                <span>Level:</span>
+                                <span>Create Time:</span>
+                                <span>Last Seen:</span>
+                                <span>Current Winstreak:</span>
+                                <span>Highest Winstreak:</span>
+                                <span>Games:</span>
+                                <span>Wins:</span>
+                                <span>Winrate:</span>
+                                <span>Deaths:</span>
+                                <span>Deathrate:</span>
+                            </div>
+                            <div class="bottomAlign compact leftAlign hhalf">
+                                <span id="username"></span>
+                                <span id="uuid"></span>
+                                <span id="level"></span>
+                                <span id="createTime"></span>
+                                <span id="lastSeen"></span>
+                                <span id="currentWinstreak"></span>
+                                <span id="highestWinstreak"></span>
+                                <span id="games"></span>
+                                <span id="wins"></span>
+                                <span id="winrate"></span>
+                                <span id="deaths"></span>
+                                <span id="deathrate"></span>
+                            </div>
+                        </div>
+                        <div class="topAlign vhalf">
+                            <span>Awards / Badges / Medals</span>
+                            <div id="awardsGrid"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sceneLevels" class="scene">
+                    <label for="searchQuery">Search Query</label>
+                    <input type="text" id="searchQuery" class="long">
+                    <button id="searchLevel">Search</button>
+                    <span>Results</span>
+                    <button class="long">User1</button>
+                    <button class="long">User2</button>
+                    <button class="long">User3</button>
+                </div>
+                <div id="sceneCrowns" class="scene">
+                    <label id="crownLabel" for="season" hidden="true">Crown Season</label>
+                    <input type="number" id="season" class="short" hidden="true">
+                    <label id="limitLabel" for="limit" hidden="true">Limit (Player Count)</label>
+                    <input type="number" id="limit" class="short" hidden="true" min="1" max="100" value="100">
+                    <select id="type" hidden="true">
+                        <option value="global">Global</option>
+                    </select>
+                    <button id="searchSeason" hidden="true">Search</button>
+                    <div id="crownsLoading" class="loading"></div>
+                    <span>Results</span>
+                    <div id="results"></div>
+                </div>
+            </div>
+            
+            <div id="sceneButtons">
+                <button id="sceneButtonPlayers">Players</button>
+                <button id="sceneButtonLevels">Levels</button>
+                <button id="sceneButtonCrowns">Crowns</button>
+            </div>
+        </div>
+        
+        <script src="scenes.js"></script>
+        <script type="module" src="players.js"></script>
+        <script type="module" src="levels.js"></script>
+        <script type="module" src="crowns.js"></script>
+    </body>
+</html>
