@@ -30,9 +30,9 @@ export class InvalidUUIDError extends Error {
 }
 
 
-// export class WebSocketSendError extends Exception {
-//     constructor(message) {
-//         super(message);
-//         this.name = "WebSocketSendError";
-//     }
-// }
+export class RequestError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "RequestError";
+    }
+}

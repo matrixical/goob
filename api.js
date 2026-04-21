@@ -1,33 +1,10 @@
-export class InvalidLoginError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "InvalidLoginError";
-    }
-}
-
-
-export class NoLevelsFoundError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "NoLevelsFoundError";
-    }
-}
-
-
-export class NoRecordsFoundError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "NoRecordsFoundError";
-    }
-}
-
-
-export class InvalidUUIDError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "InvalidUUIDError";
-    }
-}
+import {
+    InvalidLoginError,
+    NoLevelsFoundError,
+    NoRecordsFoundError,
+    InvalidUUIDError,
+    RequestError,
+} from "./errors.js"
 
 
 class API {
@@ -190,6 +167,10 @@ class API {
         }
         
         const response = await fetch(url, parameters);
+        
+        if (!response.ok) {
+            throw new RequestError("Error while sending HTTPS request!")
+        }
         
         const json = await response.json();
         return json;
@@ -628,7 +609,15 @@ class API {
      * @returns {Promise<Array>}
      */
     async getLeaderboard(leaderboardType, season, limit = 100) {
-        const response = await this.#httpsSend(`/v2/leaderboard/${leaderboardType}.${season}?limit=${limit}`, "GET");
+        let response;
+        
+        try {
+            response = await this.#httpsSend(`/v2/leaderboard/${leaderboardType}.${season}?limit=${limit}`, "GET");
+        } catch (error) {
+            if (error instanceof RequestError) {
+                throw new NoRecordsFoundError("Could not find leaderboard!");
+            }
+        }
         
         if (this.#isInvalidResponse(response)) {
             throw new NoRecordsFoundError("Could not find leaderboard!");

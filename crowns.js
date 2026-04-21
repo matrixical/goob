@@ -68,7 +68,6 @@ search.onclick = async function(event) {
         left.className = "left";
         
         const flag = document.createElement("img");
-        // flag.src = `countryflags/${JSON.parse(user["metadata"])["country"]}.png`;
         flag.src = `https://flagsapi.com/${JSON.parse(user["metadata"])["country"]}/flat/64.png`;
         left.appendChild(flag);
         
