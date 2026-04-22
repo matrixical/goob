@@ -41,6 +41,8 @@ crownsLoading.remove();
 
 
 searchButton.onclick = async function(event) {
+    setUrlParameter("type", type.value);
+    
     results.replaceChildren([]);
     
     const loading = document.createElement("div");
@@ -107,3 +109,12 @@ searchButton.onclick = async function(event) {
     
     loading.remove();
 };
+
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+if (urlSearchParams.has("type")) {
+    const leaderboardType = urlSearchParams.get("type");
+    type.value = leaderboardType;
+    
+    await searchButton.onclick();
+}

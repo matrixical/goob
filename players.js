@@ -1,33 +1,6 @@
 import { api } from "./api.js";
 
 
-function isValidUuid(uuid) {
-    if (uuid.length != 36) {
-        return false;
-    }
-    
-    if (!/^[a-zA-z0-9-]+$/.test(uuid)) {
-        return false;
-    }
-    
-    const parts = uuid.split("-");
-    
-    if (parts.length != 5) {
-        return false;
-    }
-    
-    const lengths = [8, 4, 4, 4, 12];
-    
-    for (let i = 0; i < lengths.length; i++) {
-        if (parts[i].length != lengths[i]) {
-            return false;
-        }
-    }
-    
-    return true;
-}
-
-
 const searchList = document.getElementById("playerSearch");
 const uuidOrUsername = document.getElementById("uuidOrUsername");
 const searchPlayer = document.getElementById("searchPlayer");
@@ -41,7 +14,7 @@ searchPlayer.onclick = async function(event) {
     searchList.appendChild(loading);
     
     const users = {};
-    if (isValidUuid(uuidOrUsername.value)) {
+    if (api.isValidUuid(uuidOrUsername.value)) {
         const user = await api.getUser(uuidOrUsername.value);
         users[uuidOrUsername.value] = user["username"]
     } else {
@@ -75,9 +48,9 @@ searchPlayer.onclick = async function(event) {
             }
             
             await showPlayerInfo(uuid);
-        }
+        };
     }
-}
+};
 
 
 export function enableAllButtons() {
@@ -122,9 +95,7 @@ const developerUuids = [
 
 
 export async function showPlayerInfo(uuid) {
-    const url = new URL(window.location.href);
-    url.searchParams.set("player", uuid);
-    window.history.pushState({}, "", url);
+    setUrlParameter("player", uuid);
     
     const queryPlayerProfile = await api.queryPlayerProfile(uuid);
     const getUser = await api.getUser(uuid);
@@ -191,7 +162,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 if (urlSearchParams.has("player")) {
     const uuid = urlSearchParams.get("player");
     
-    if (isValidUuid(uuid)) {
-        await showPlayerInfo(urlSearchParams.get("player"));
+    if (api.isValidUuid(uuid)) {
+        await showPlayerInfo(uuid);
     }
 }

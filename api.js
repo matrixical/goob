@@ -640,6 +640,34 @@ class API {
             return String.fromCodePoint(character.charCodeAt() + offset);
         }).join("");
     }
+    
+    
+    isValidUuid(uuid) {
+        if (uuid.length != 36) {
+            return false;
+        }
+        
+        if (!/^[a-zA-z0-9-]+$/.test(uuid)) {
+            return false;
+        }
+        
+        const parts = uuid.split("-");
+        
+        if (parts.length != 5) {
+            return false;
+        }
+        
+        const lengths = [8, 4, 4, 4, 12];
+        
+        for (let i = 0; i < lengths.length; i++) {
+            if (parts[i].length != lengths[i]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    //endregion
 }
 
 

@@ -19,7 +19,7 @@ searchLevel.onclick = async function(event) {
     loadLevels(levels);
     
     loading.remove();
-}
+};
 
 
 const timeRange = document.getElementById("timeRange");
@@ -36,7 +36,7 @@ timeRange.onchange = async function(event) {
     loadLevels(levels);
     
     loading.remove();
-}
+};
 
 
 const topRatedButton = document.getElementById("topRatedLevels");
@@ -169,7 +169,7 @@ function loadLevels(levels) {
             ratingHTML = `
                 <div class="horizontal rightAlign">
                     <img src="icons/rate.png" class="${ratingColor}">
-                    <span class="${ratingColor}">${decimal.format(ratingPercentage)}%</span>
+                    <span class="${ratingColor} short">${decimal.format(ratingPercentage)}%</span>
                 </div>
                 <span>(${level["rating_count"] ?? 0})</span>
             `;
@@ -195,7 +195,7 @@ function loadLevels(levels) {
                 otherButton.disabled = otherButton == button;
             }
             
-            await showLevelInfo(level);
+            await showLevelInfo(level["id"], level);
         }
     }
 }
@@ -220,7 +220,14 @@ const ratingLabel = document.getElementById("levelRating");
 const ratingCountLabel = document.getElementById("levelRatingCount");
 
 
-function showLevelInfo(level) {
+async function showLevelInfo(uuid, level) {
+    setUrlParameter("level", uuid);
+    
+    if (!level) {
+        const levels = await api.queryLevelsSearch(uuid);
+        level = levels[0];
+    }
+    
     nameLabel.textContent = level["name"];
     levelIdLabel.textContent = level["id"];
     creatorNameLabel.textContent = level["author_name"];
@@ -236,4 +243,14 @@ function showLevelInfo(level) {
     ratingLabel.textContent = `${decimal.format(ratingPercentage)}%`;
     
     ratingCountLabel.textContent = level["rating_count"] ?? 0;
+}
+
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+if (urlSearchParams.has("level")) {
+    const uuid = urlSearchParams.get("level");
+    
+    if (api.isValidUuid(uuid)) {
+        await showLevelInfo(uuid);
+    }
 }
