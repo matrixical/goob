@@ -410,6 +410,8 @@ class API {
     
     "rating_count" is how many people rated the level
     
+    "favorites_count" will only be there if using queryLevelsMostFavorited
+    
     {
         "id": "00000000-0000-0000-0000-000000000001",
         "author_id": "00000000-0000-0000-0000-000000000001",
@@ -417,7 +419,7 @@ class API {
         "author_name": "authorName",
         "theme": "grassy",
         "world": 0,
-        "published": "Private or Published or Curated",
+        "published": "Private or Public or Curated",
         "player_count": 1,
         "game_mode": "Race or Knockout or Lobby",
         "data": "",
@@ -427,6 +429,7 @@ class API {
         "update_time": "ISO 8601 Time",
         "rating": 5,
         "rating_count": 1
+        "favorites_count": 0
     }
     */
     

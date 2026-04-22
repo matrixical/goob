@@ -1,0 +1,344 @@
+@font-face {
+    font-family: "baloo2";
+    src: url("./baloo2.ttf") format("truetype");
+}
+
+div, span, input, button {
+    font-family: "baloo2";
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    outline-width: 5px;
+    outline-color: #ffffff;
+}
+
+html, body {
+    background-color: #002b57;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+#app {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    width: 100vw;
+    height: 100vh;
+}
+
+#app.shifted {
+    transform: translateY(-100vh);
+}
+
+select, ::picker(select) {
+    appearance: base-select;
+}
+
+button, select {
+    background-color: #368ada;
+    outline-style: solid;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-width: 150px;
+    min-height: 25px;
+}
+
+button:hover, select:hover {
+    background-color: #60acf4;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+button:active, select:active {
+    background-color: #1d78ce;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+button:disabled {
+    background-color: #1d78ce;
+    cursor: not-allowed;
+}
+
+input {
+    background-color: #00488f;
+    outline-style: solid;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+input:focus {
+    background-color: #005bb7;
+    transform: scale(1.1);
+}
+
+input::placeholder {
+    color: #ffffff;
+}
+
+.scene {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#sceneLogin {
+    position: absolute;
+}
+
+#sceneRow {
+    position: absolute;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#sceneButtons {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top: calc(100vh - 100px);
+}
+
+#sceneButtons button {
+    min-width: 100px;
+}
+
+.small {
+    display: flex;
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.long {
+    min-width: 300px;
+}
+
+.short {
+    max-width: 75px;
+    font-size: larger;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left, .right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.center {
+    flex: 1;
+    text-align: center;
+}
+
+.user img {
+    max-width: 28px;
+    max-height: 20px;
+}
+
+/* Code from cssloaders.github.io */
+.loading {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hhalf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    height: 100%;
+}
+
+.vhalf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 50%;
+}
+
+#awardsGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: auto;
+    place-items: center;
+    width: calc(100% - 60px);
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#awardsGrid img {
+    max-width: 64px;
+    max-height: 64px;
+}
+
+.award {
+    position: relative;
+}
+
+.award span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #00488f73;
+    min-width: 50px;
+    text-align: center;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    min-height: 40px;
+    max-height: calc(100vh - 600px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftAlign span {
+    width: 100%;
+    text-align: left;
+}
+
+.rightAlign span {
+    width: 100%;
+    text-align: right;
+}
+
+.topAlign {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bottomAlign {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.compact {
+    gap: 3px;
+}
+
+.background {
+    z-index: 0;
+    width: 300vw;
+    height: 300vh;
+    position: absolute;
+    background: repeating-linear-gradient(
+        45deg,
+        #002041,
+        #002041 0%,
+        #002041 25%,
+        #002b57 25%,
+        #002b57 50%
+    );
+    background-size: 80px 80px;
+    animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 0px 0px;
+    }
+    
+    100% {
+        background-position: -80px 80px;
+    }
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+#levelButtons {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top: calc(100px);
+}
+
+#levelResults button {
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 65px;
+    overflow: hidden;
+}
+
+.level {
+    gap: 0px;
+}
+
+.green {
+    filter: brightness(0) saturate(100%) invert(88%) sepia(12%) saturate(1193%) hue-rotate(69deg) brightness(109%) contrast(97%);
+    color: #aafbb8;
+}
+
+.yellow {
+    filter: brightness(0) saturate(100%) invert(94%) sepia(81%) saturate(509%) hue-rotate(16deg) brightness(104%) contrast(110%);
+    color: #efff80;
+}
+
+.red {
+    filter: brightness(0) saturate(100%) invert(88%) sepia(32%) saturate(4950%) hue-rotate(303deg) brightness(95%) contrast(121%);
+    color: #ff8888;
+}
+
+.unknown {
+    filter: brightness(0) saturate(100%) invert(62%) sepia(49%) saturate(661%) hue-rotate(188deg) brightness(102%) contrast(94%);
+    color: #81b0f8;
+}

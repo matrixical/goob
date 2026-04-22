@@ -62,10 +62,6 @@ searchPlayer.onclick = async function(event) {
         const userButton = document.createElement("button");
         userButton.className = "long user";
         
-        // const flag = document.createElement("img");
-        // flag.src = `countryflags/${user["country"]}.png`;
-        // userButton.appendChild(flag);
-        
         const name = document.createElement("span");
         name.textContent = username;
         userButton.appendChild(name);
@@ -91,18 +87,18 @@ export function enableAllButtons() {
 }
 
 
-const usernameLabel = document.getElementById("username");
-const uuidLabel = document.getElementById("uuid");
-const levelLabel = document.getElementById("level");
-const createTimeLabel = document.getElementById("createTime");
-const lastSeenLabel = document.getElementById("lastSeen");
-const currentWinstreakLabel = document.getElementById("currentWinstreak");
-const highestWinstreakLabel = document.getElementById("highestWinstreak");
-const gamesLabel = document.getElementById("games");
-const winsLabel = document.getElementById("wins");
-const winrateLabel = document.getElementById("winrate");
-const deathsLabel = document.getElementById("deaths");
-const deathrateLabel = document.getElementById("deathrate");
+const usernameLabel = document.getElementById("playerUsername");
+const uuidLabel = document.getElementById("playerUuid");
+const levelLabel = document.getElementById("playerLevel");
+const createTimeLabel = document.getElementById("playerCreateTime");
+const lastSeenLabel = document.getElementById("playerLastSeen");
+const currentWinstreakLabel = document.getElementById("playerCurrentWinstreak");
+const highestWinstreakLabel = document.getElementById("playerHighestWinstreak");
+const gamesLabel = document.getElementById("playerGames");
+const winsLabel = document.getElementById("playerWins");
+const winrateLabel = document.getElementById("playerWinrate");
+const deathsLabel = document.getElementById("playerDeaths");
+const deathrateLabel = document.getElementById("playerDeathrate");
 
 const awardsGrid = document.getElementById("awardsGrid");
 
