@@ -1,7 +1,7 @@
 /* Fullscreen */
 html, body {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,13 +9,18 @@ html, body {
     overflow: hidden;
 }
 
+body {
+    position: relative;
+}
+
 
 /* Background */
 .background {
     z-index: 0;
-    width: 300vw;
-    height: 300vh;
-    position: absolute;
+    width: 100vw;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
     background: repeating-linear-gradient(
         45deg,
         #002041,
@@ -26,6 +31,7 @@ html, body {
     );
     background-size: 80px 80px;
     animation: slide 5s linear infinite;
+    border-radius: 0;
 }
 
 @keyframes slide {
@@ -138,7 +144,7 @@ input::placeholder {
     justify-content: center;
     transition: transform 0.1s cubic-bezier(0.23, 1, 0.320, 1);
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
 }
 
 
@@ -150,7 +156,7 @@ input::placeholder {
     flex-direction: column;
     padding: 50px;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
 }
 
 #sceneRow {
@@ -158,7 +164,7 @@ input::placeholder {
     left: 0px;
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100dvh;
     transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
@@ -166,7 +172,7 @@ input::placeholder {
     position: absolute;
     display: flex;
     gap: 20px;
-    top: calc(100vh - 100px);
+    top: calc(100dvh - 100px);
 }
 
 #sceneButtons button {
@@ -413,7 +419,11 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
         font-size: medium;
     }
     
-    span.smallFont.smallFont {
+    span.bigFont.bigFont, label.bigFont.bigFont, input.bigFont.bigFont {
+        font-size: large;
+    }
+    
+    span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
         font-size: small;
     }
     
@@ -455,5 +465,77 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
     
     #sceneCrowns {
         flex-direction: column;
+    }
+    
+    @media (pointer: coarse) {
+        .scene {
+            padding: 20px;
+        }
+        
+        *, *::before, *::after {
+            font-size: smaller;
+        }
+        
+        button, input, select {
+            min-height: 20px;
+        }
+    
+        .panel {
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .longWidth {
+            min-width: 150px;
+        }
+        
+        .superLongWidth {
+            min-width: 200px;
+        }
+        
+        .smallSize {
+            display: flex;
+            max-width: 10px;
+            max-height: 10px;
+        }
+
+        #sceneButtons {
+            top: calc(100dvh - 50px);
+        }
+        
+        span.bigFont.bigFont, label.bigFont.bigFont, input.bigFont.bigFont {
+            font-size: small;
+        }
+        
+        span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
+            font-size: xx-small;
+        }
+    
+        .goober {
+            max-width: 50px;
+        }
+        
+        #playerSearch, #levelResults {
+            margin-top: 0;
+            padding: 0;
+            gap: 20px;
+        }
+        
+        #crownResults {
+            width: 275px;
+        }
+        
+        .level {
+            min-width: 200px;
+            min-height: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .player {
+            min-width: 150px;
+        }
     }
 }
