@@ -16,20 +16,23 @@
         <div id="app">
             <div id="sceneRow">
                 <div id="scenePlayers" class="horizontal scene">
-                    <div id="playerSearch" class="hhalf">
+                    <div id="scenePlayersLeft" class="vertical splitLeft panel">
                         <label for="uuidOrUsername">UUID or Username</label>
-                        <input type="text" id="uuidOrUsername" class="long" value="00000000-0000-0000-0000-000000000001">
-                        <button id="searchPlayer">Search</button>
-                        <span>Results</span>
+                        <input id="uuidOrUsername" class="longWidth" type="text" value="00000000-0000-0000-0000-000000000001">
+                        <button id="searchPlayer" class="longWidth">Search</button>
+                        <div id="playerSearch" class="panel">
+                            <span>Results</span>
+                        </div>
                     </div>
-                    <div class="hhalf" style="margin-right: 10%;">
-                        <div class="horizontal vhalf">
-                            <div class="bottomAlign compact rightAlign hhalf">
+                    
+                    <div id="scenePlayersRight" class="vertical splitRight panel">
+                        <div class="horizontal splitTop panel">
+                            <div class="textRight playerInfo vertical">
                                 <span>Username:</span>
-                                <span>UUID / User ID:</span>
+                                <span class="smallFont">UUID / User ID:</span>
                                 <span>Level:</span>
-                                <span>Create Time:</span>
-                                <span>Last Seen:</span>
+                                <span class="smallFont">Create Time:</span>
+                                <span class="smallFont">Last Seen:</span>
                                 <span>Current Winstreak:</span>
                                 <span>Highest Winstreak:</span>
                                 <span>Games:</span>
@@ -38,110 +41,49 @@
                                 <span>Deaths:</span>
                                 <span>Deathrate:</span>
                             </div>
-                            <div class="bottomAlign compact leftAlign hhalf">
-                                <span id="playerUsername"></span>
-                                <span id="playerUuid"></span>
-                                <span id="playerLevel"></span>
-                                <span id="playerCreateTime"></span>
-                                <span id="playerLastSeen"></span>
-                                <span id="playerCurrentWinstreak"></span>
-                                <span id="playerHighestWinstreak"></span>
-                                <span id="playerGames"></span>
-                                <span id="playerWins"></span>
-                                <span id="playerWinrate"></span>
-                                <span id="playerDeaths"></span>
-                                <span id="playerDeathrate"></span>
+                            
+                            <div class="textLeft playerInfo vertical">
+                                <span id="playerUsername">asdf</span>
+                                <span id="playerUuid" class="smallFont">asdf</span>
+                                <span id="playerLevel">asdf</span>
+                                <span id="playerCreateTime" class="smallFont">asdf</span>
+                                <span id="playerLastSeen" class="smallFont">asdf</span>
+                                <span id="playerCurrentWinstreak">asdf</span>
+                                <span id="playerHighestWinstreak">asdf</span>
+                                <span id="playerGames">asdf</span>
+                                <span id="playerWins">asdf</span>
+                                <span id="playerWinrate">asdf</span>
+                                <span id="playerDeaths">asdf</span>
+                                <span id="playerDeathrate">asdf</span>
                             </div>
+                            
+                            <img class="goober" src="placeholder.png">
                         </div>
-                        <div class="topAlign vhalf">
+                        
+                        <div class="awardGridContainer splitBottom panel vertical">
                             <span>Awards / Badges / Medals</span>
-                            <div id="awardsGrid"></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="sceneLevels" class="scene">
-                    <div id="levelButtons">
-                        <button id="topRatedLevels" class="user" data-query-function="queryLevelsTopRated">
-                            <img class="small left" src="icons/topRated.png">
-                            <span class="center">Top Rated</span>
-                        </button>
-                        <button id="mostFavoritedLevels" class="user" data-query-function="queryLevelsMostFavorited">
-                            <img class="small left" src="icons/favorite.png">
-                            <span class="center">Most Fav'd</span>
-                        </button>
-                        <button id="newLevels" class="user" data-query-function="queryLevelsNew">
-                            <img class="small left" src="icons/new.png">
-                            <span class="center">New</span>
-                        </button>
-                        <button id="certifiedLevels" class="user" data-query-function="queryLevelsCurated">
-                            <img class="small left" src="icons/certified.png">
-                            <span class="center">Certified</span>
-                        </button>
-                        <button id="searchLevels" class="user" data-query-function="queryLevelsSearch">
-                            <img class="small left" src="icons/search.png">
-                            <span class="center">Search</span>
-                        </button>
-                    </div>
-                    <div class="horizontal full">
-                        <div class="hhalf">
-                            <label id="searchQueryLabel" for="searchQuery" hidden="true">Search Query</label>
-                            <input type="text" id="searchQuery" hidden="true">
-                            <button id="searchLevel" hidden="true">Search</button>
-                            <select id="timeRange" hidden="true">
-                                <option value="all">All Time</option>
-                                <option value="day">Today</option>
-                                <option value="week">This Week</option>
-                                <option value="month">This Month</option>
-                            </select>
-                            <span>Results</span>
-                            <div id="levelResults" class="results"></div>
-                        </div>
-                        <div class="hhalf">
-                            <div class="horizontal vhalf" style="margin-right: 10%;">
-                                <div class="compact rightAlign hhalf">
-                                    <span>Name:</span>
-                                    <span>UUID / Level ID:</span>
-                                    <span>Creator Name:</span>
-                                    <span>UUID / Creator ID:</span>
-                                    <span>Create Time:</span>
-                                    <span>Last Update:</span>
-                                    <span>Player Count:</span>
-                                    <span>Theme:</span>
-                                    <span>Status:</span>
-                                    <span>Gamemode:</span>
-                                    <span>Rating:</span>
-                                    <span>Rating Count:</span>
-                                </div>
-                                <div class="compact leftAlign hhalf">
-                                    <span id="levelName"></span>
-                                    <span id="levelLevelId"></span>
-                                    <span id="levelCreatorName"></span>
-                                    <span id="levelCreatorId"></span>
-                                    <span id="levelCreateTime"></span>
-                                    <span id="levelLastUpdate"></span>
-                                    <span id="levelPlayerCount"></span>
-                                    <span id="levelTheme"></span>
-                                    <span id="levelStatus"></span>
-                                    <span id="levelGamemode"></span>
-                                    <span id="levelRating"></span>
-                                    <span id="levelRatingCount"></span>
-                                </div>
+                            <div id="awardsGrid">
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
+                                <div class="award"><img src="awards/betatester.png"><span>x10</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <div id="sceneLevels" class="scene">
+                    sceneLevels
+                </div>
+                
                 <div id="sceneCrowns" class="scene">
-                    <label id="crownLabel" for="season" hidden="true">Crown Season</label>
-                    <input type="number" id="season" class="short" hidden="true">
-                    <label id="limitLabel" for="limit" hidden="true">Limit (Player Count)</label>
-                    <input type="number" id="limit" class="short" hidden="true" min="1" max="100" value="100">
-                    <select id="type" hidden="true">
-                        <option value="global">Global</option>
-                    </select>
-                    <button id="searchSeason" hidden="true">Search</button>
-                    <div id="crownsLoading" class="loading"></div>
-                    <span>Results</span>
-                    <div id="crownResults" class="results"></div>
+                    sceneCrowns
                 </div>
             </div>
             
@@ -151,10 +93,9 @@
                 <button id="sceneButtonCrowns">Crowns</button>
             </div>
         </div>
-        
         <script src="scenes.js"></script>
         <script type="module" src="players.js"></script>
-        <script type="module" src="levels.js"></script>
-        <script type="module" src="crowns.js"></script>
+        <!-- <script type="module" src="levels.js"></script> -->
+        <!-- <script type="module" src="crowns.js"></script> -->
     </body>
 </html>

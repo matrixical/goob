@@ -33,7 +33,7 @@ searchPlayer.onclick = async function(event) {
         const username = users[uuid];
         
         const userButton = document.createElement("button");
-        userButton.className = "long user";
+        userButton.className = "player";
         
         const name = document.createElement("span");
         name.textContent = username;

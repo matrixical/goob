@@ -81,7 +81,7 @@ searchButton.onclick = async function(event) {
         }
         
         const button = document.createElement("button");
-        button.className = "long user";
+        button.className = "player";
         
         button.innerHTML = `
             <div class="left">
