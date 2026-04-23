@@ -218,7 +218,7 @@ input::placeholder {
     min-width: 300px;
 }
 
-.smallFont {
+span.smallFont.smallFont {
     font-size: medium;
 }
 
@@ -232,9 +232,13 @@ input::placeholder {
     text-align: right;
 }
 
+.textRight {
+    align-items: flex-end;
+}
 
 /* Custom */
-#playerSearch {
+/* Player */
+#playerSearch, #levelResults {
     width: 100%;
     height: 100%;
     justify-content: start;
@@ -242,20 +246,20 @@ input::placeholder {
     margin-top: 50px;
     padding: 45px;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .player {
     min-width: 300px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
 .playerInfo {
     gap: 0px;
     min-width: 0;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .playerInfo span {
@@ -266,6 +270,8 @@ input::placeholder {
     max-width: 200px;
 }
 
+
+/* Awards */
 .awardGridContainer {
     justify-content: center;
     padding: 25px;
@@ -301,9 +307,75 @@ input::placeholder {
 }
 
 
+/* Level */
+.levelInfo {
+    gap: 0px;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+.levelInfo span {
+    white-space: nowrap;
+    font-size: larger;
+}
+
+#sceneLevelsRight {
+    justify-content: center;
+}
+
+.level {
+    min-width: 400px;
+    min-height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.level div {
+    gap: 0px;
+}
+
+.level div div img {
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.level div div {
+    align-items: center;
+    gap: 5px;
+}
+
+
+/* Colors */
+.green {
+    filter: brightness(0) saturate(100%) invert(88%) sepia(12%) saturate(1193%) hue-rotate(69deg) brightness(109%) contrast(97%);
+    color: #aafbb8;
+}
+
+.yellow {
+    filter: brightness(0) saturate(100%) invert(94%) sepia(81%) saturate(509%) hue-rotate(16deg) brightness(104%) contrast(110%);
+    color: #efff80;
+}
+
+.red {
+    filter: brightness(0) saturate(100%) invert(88%) sepia(32%) saturate(4950%) hue-rotate(303deg) brightness(95%) contrast(121%);
+    color: #ff8888;
+}
+
+.unknown {
+    filter: brightness(0) saturate(100%) invert(62%) sepia(49%) saturate(661%) hue-rotate(188deg) brightness(102%) contrast(94%);
+    color: #81b0f8;
+}
+
+
 @media screen and (max-aspect-ratio: 4/5) {
     *, *::before, *::after {
         font-size: medium;
+    }
+    
+    span.smallFont.smallFont {
+        font-size: small;
     }
     
     .panel {
@@ -324,8 +396,21 @@ input::placeholder {
         height: 65%;
     }
     
-    #playerSearch {
+    #playerSearch, #levelResults {
         padding: 10px;
-        overflow-y: scroll;
+    }
+    
+    #sceneLevels {
+        flex-direction: column;
+    }
+    
+    #sceneLevelsLeft {
+        width: 100%;
+        height: 55%;
+    }
+    
+    #sceneLevelsRight {
+        width: 100%;
+        height: 45%;
     }
 }

@@ -39,34 +39,27 @@ timeRange.onchange = async function(event) {
 };
 
 
-const topRatedButton = document.getElementById("topRatedLevels");
-topRatedButton.onclick = () => queryLevel(topRatedButton);
-
-const mostFavoritedButton = document.getElementById("mostFavoritedLevels");
-mostFavoritedButton.onclick = () => queryLevel(mostFavoritedButton);
-
-const newButton = document.getElementById("newLevels");
-newButton.onclick = () => queryLevel(newButton);
-
-const certifiedButton = document.getElementById("certifiedLevels");
-certifiedButton.onclick = () => queryLevel(certifiedButton);
-
-const searchButton = document.getElementById("searchLevels");
-searchButton.onclick = () => queryLevel(searchButton);
+const levelQueries = document.getElementById("levelQueries");
+levelQueries.onchange = queryLevel
 
 const results = document.getElementById("levelResults");
 
 
-async function queryLevel(button) {
+async function queryLevel() {
     results.replaceChildren([]);
+    
+    const resultsSpan = document.createElement("span");
+    resultsSpan.textContent = "Results";
+    results.appendChild(resultsSpan);
     
     searchQueryLabel.hidden = true;
     searchQuery.hidden = true;
     searchLevel.hidden = true;
+    
     timeRange.hidden = true;
     isOnMostFavorited = false;
     
-    if (button == searchButton) {
+    if (levelQueries.value == "queryLevelsSearch") {
         searchQueryLabel.hidden = false;
         searchQuery.hidden = false;
         searchLevel.hidden = false;
@@ -79,18 +72,20 @@ async function queryLevel(button) {
     
     let levels;
     
-    if (button == mostFavoritedButton) {
+    if (levelQueries.value == "queryLevelsMostFavorited") {
         timeRange.hidden = false;
         isOnMostFavorited = true;
         levels = await api.queryLevelsMostFavorited(timeRange.value);
     } else {
-        levels = await api[button.dataset.queryFunction]();
+        levels = await api[levelQueries.value]();
     }
     
     loadLevels(levels);
     
     loading.remove();
 }
+
+queryLevel();
 
 
 const decimal = new Intl.NumberFormat("en-US", {
@@ -143,15 +138,15 @@ const buttons = [];
 function loadLevels(levels) {
     for (const level of levels) {
         const button = document.createElement("button");
-        button.className = "long user";
+        button.className = "level";
         
         let ratingHTML;
         
         if (isOnMostFavorited) {
             ratingHTML = `
-                <div class="horizontal rightAlign">
-                    <img src="icons/favorite.png" class="red"">
-                    <span class="green short">${level["favorites_count"]}</span>
+                <div class="horizontal">
+                    <img class="red" src="icons/favorite.png">
+                    <span class="green">${level["favorites_count"]}</span>
                 </div>
             `;
         } else {
@@ -167,22 +162,22 @@ function loadLevels(levels) {
             }
             
             ratingHTML = `
-                <div class="horizontal rightAlign">
-                    <img src="icons/rate.png" class="${ratingColor}">
-                    <span class="${ratingColor} short">${decimal.format(ratingPercentage)}%</span>
+                <div class="horizontal">
+                    <img class="${ratingColor}" src="icons/rate.png">
+                    <span class="${ratingColor}">${decimal.format(ratingPercentage)}%</span>
                 </div>
-                <span>(${level["rating_count"] ?? 0})</span>
+                <span class="smallFont">(${level["rating_count"] ?? 0})</span>
             `;
         }
         
         button.innerHTML = `
-            <div class="vertical left leftAlign level">
+            <div class="vertical textLeft">
                 <span>${level["name"]}</span>
                 <span>${level["author_name"]}</span>
-                <span>${level["game_mode"]} (${level["player_count"]})</span>
+                <span class="smallFont">${level["game_mode"]} (${level["player_count"]})</span>
             </div>
-            <div class="vertical right rightAlign level">
-                <span>${timeAgo(level["update_time"])}</span>
+            <div class="vertical textRight">
+                <span class="smallFont">${timeAgo(level["update_time"])}</span>
                 ${ratingHTML}
             </div>
         `;

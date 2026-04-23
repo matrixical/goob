@@ -8,7 +8,7 @@
         
         <meta property="og:title" content="GOOB">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Tools for Goober Dash by Winterpixel Games&#10;Work in progress, not mobile-friendly">
+        <meta property="og:description" content="Tools for Goober Dash by Winterpixel Games&#10;Work in progress">
     </head>
     
     <body>
@@ -78,12 +78,60 @@
                     </div>
                 </div>
                 
-                <div id="sceneLevels" class="scene">
-                    sceneLevels
-                </div>
-                
-                <div id="sceneCrowns" class="scene">
-                    sceneCrowns
+                <div id="sceneLevels" class="horizontal scene">
+                    <div id="sceneLevelsLeft" class="vertical splitLeft panel">
+                        <select id="levelQueries" class="longWidth">
+                            <option value="queryLevelsTopRated">Top Rated</option>
+                            <option value="queryLevelsMostFavorited">Most Fav'd</option>
+                            <option value="queryLevelsNew" selected>New</option>
+                            <option value="queryLevelsCurated">Certified</option>
+                            <option value="queryLevelsSearch">Search</option>
+                        </select>
+                        <select id="timeRange" class="longWidth" hidden="true">
+                            <option value="all">All Time</option>
+                            <option value="day">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                        <label id="searchQueryLabel" for="searchQuery" hidden="true">Search Query</label>
+                        <input id="searchQuery" class="longWidth" type="text" hidden="true">
+                        <button id="searchLevel" class="longWidth" hidden="true">Search</button>
+                        <div id="levelResults" class="panel">
+                            <span>Results</span>
+                        </div>
+                    </div>
+                    
+                    <div id="sceneLevelsRight" class="horizontal splitRight panel">
+                        <div class="textRight levelInfo vertical">
+                            <span>Name:</span>
+                            <span class="smallFont">UUID / Level ID:</span>
+                            <span>Creator Name:</span>
+                            <span class="smallFont">UUID / Creator ID:</span>
+                            <span class="smallFont">Create Time:</span>
+                            <span class="smallFont">Last Update:</span>
+                            <span>Player Count:</span>
+                            <span>Theme:</span>
+                            <span>Status:</span>
+                            <span>Gamemode:</span>
+                            <span>Rating:</span>
+                            <span>Rating Count:</span>
+                        </div>
+                        
+                        <div class="textLeft levelInfo vertical">
+                            <span id="levelName">asdf</span>
+                            <span id="levelLevelId" class="smallFont">asdf</span>
+                            <span id="levelCreatorName">asdf</span>
+                            <span id="levelCreatorId" class="smallFont">asdf</span>
+                            <span id="levelCreateTime" class="smallFont">asdf</span>
+                            <span id="levelLastUpdate" class="smallFont">asdf</span>
+                            <span id="levelPlayerCount">asdf</span>
+                            <span id="levelTheme">asdf</span>
+                            <span id="levelStatus">asdf</span>
+                            <span id="levelGamemode">asdf</span>
+                            <span id="levelRating">asdf</span>
+                            <span id="levelRatingCount">asdf</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -95,7 +143,7 @@
         </div>
         <script src="scenes.js"></script>
         <script type="module" src="players.js"></script>
-        <!-- <script type="module" src="levels.js"></script> -->
+        <script type="module" src="levels.js"></script>
         <!-- <script type="module" src="crowns.js"></script> -->
     </body>
 </html>
