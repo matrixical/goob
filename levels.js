@@ -11,6 +11,10 @@ const searchLevel = document.getElementById("searchLevel");
 searchLevel.onclick = async function(event) {
     results.replaceChildren([]);
     
+    const resultsSpan = document.createElement("span");
+    resultsSpan.textContent = "Results";
+    results.appendChild(resultsSpan);
+    
     const loading = document.createElement("div");
     loading.className = "loading";
     results.appendChild(loading);
@@ -27,6 +31,10 @@ let isOnMostFavorited = false;
 
 timeRange.onchange = async function(event) {
     results.replaceChildren([]);
+    
+    const resultsSpan = document.createElement("span");
+    resultsSpan.textContent = "Results";
+    results.appendChild(resultsSpan);
     
     const loading = document.createElement("div");
     loading.className = "loading";

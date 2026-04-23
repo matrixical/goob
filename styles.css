@@ -93,8 +93,6 @@ button:disabled {
 }
 
 input {
-    font-size: small;
-    
     background-color: #00488f;
     outline-style: solid;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -119,6 +117,15 @@ input::placeholder {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -218,7 +225,21 @@ input::placeholder {
     min-width: 300px;
 }
 
-span.smallFont.smallFont {
+.superLongWidth {
+    min-width: 500px;
+}
+
+.smallSize {
+    display: flex;
+    max-width: 25px;
+    max-height: 25px;
+}
+
+span.bigFont.bigFont, label.bigFont.bigFont, input.bigFont.bigFont {
+    font-size: xx-large;
+}
+
+span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
     font-size: medium;
 }
 
@@ -252,7 +273,7 @@ span.smallFont.smallFont {
 .player {
     min-width: 300px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -347,6 +368,24 @@ span.smallFont.smallFont {
 }
 
 
+/* Crowns */
+#crownResults {
+    width: 550px;
+    height: 100%;
+    max-height: 500px;
+    justify-content: start;
+    gap: 20px;
+    padding: 45px;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.player div.horizontal {
+    gap: 5px;
+    align-items: center;
+}
+
+
 /* Colors */
 .green {
     filter: brightness(0) saturate(100%) invert(88%) sepia(12%) saturate(1193%) hue-rotate(69deg) brightness(109%) contrast(97%);
@@ -412,5 +451,9 @@ span.smallFont.smallFont {
     #sceneLevelsRight {
         width: 100%;
         height: 45%;
+    }
+    
+    #sceneCrowns {
+        flex-direction: column;
     }
 }

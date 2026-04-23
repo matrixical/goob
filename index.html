@@ -18,7 +18,7 @@
                 <div id="scenePlayers" class="horizontal scene">
                     <div id="scenePlayersLeft" class="vertical splitLeft panel">
                         <label for="uuidOrUsername">UUID or Username</label>
-                        <input id="uuidOrUsername" class="longWidth" type="text" value="00000000-0000-0000-0000-000000000001">
+                        <input id="uuidOrUsername" class="longWidth smallFont" type="text" value="00000000-0000-0000-0000-000000000001">
                         <button id="searchPlayer" class="longWidth">Search</button>
                         <div id="playerSearch" class="panel">
                             <span>Results</span>
@@ -133,6 +133,19 @@
                         </div>
                     </div>
                 </div>
+                
+                <div id="sceneCrowns" class="scene">
+                    <div id="crownsLoading" class="loading"></div>
+                    <div class="vertical panel">
+                        <label id="crownLabel" class="longWidth bigFont" hidden="true">Season X</label>
+                        <label id="limitLabel" class="longWidth" for="limit" hidden="true">Limit (Player Count)</label>
+                        <input id="limit" class="longWidth bigFont" hidden="true" type="number" min="1" max="100" value="100">
+                        <select id="type" hidden="true">
+                            <option value="global">Global</option>
+                        </select>
+                        <div id="crownResults" class="vertical panel"></div>
+                    </div>
+                </div>
             </div>
             
             <div id="sceneButtons">
@@ -144,6 +157,6 @@
         <script src="scenes.js"></script>
         <script type="module" src="players.js"></script>
         <script type="module" src="levels.js"></script>
-        <!-- <script type="module" src="crowns.js"></script> -->
+        <script type="module" src="crowns.js"></script>
     </body>
 </html>

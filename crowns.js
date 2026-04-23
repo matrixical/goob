@@ -17,30 +17,23 @@ for (const country of countries) {
     type.appendChild(option);
 }
 
-const searchButton = document.getElementById("searchSeason");
-
 const crownsLoading = document.getElementById("crownsLoading");
-
-const currentSeason = await api.getCurrentSeason();
-const season = document.getElementById("season");
-season.max = currentSeason;
-season.value = currentSeason;
-
 const limit = document.getElementById("limit");
 
 const crownLabel = document.getElementById("crownLabel");
+const currentSeason = await api.getCurrentSeason();
+crownLabel.textContent = `Season ${currentSeason}`
+
 const limitLabel = document.getElementById("limitLabel");
 
 type.hidden = false;
-searchButton.hidden = false;
-season.hidden = false;
 limit.hidden = false;
 crownLabel.hidden = false;
 limitLabel.hidden = false;
 crownsLoading.remove();
 
 
-searchButton.onclick = async function(event) {
+type.onchange = async function(event) {
     setUrlParameter("type", type.value);
     
     results.replaceChildren([]);
@@ -51,7 +44,7 @@ searchButton.onclick = async function(event) {
     
     let leaderboard = null;
     try {
-        leaderboard = await api.getLeaderboard(type.value, season.value, limit.value);
+        leaderboard = await api.getLeaderboard(type.value, currentSeason, limit.value);
     } catch (error) {
         if (error instanceof NoRecordsFoundError) {
             loading.remove();
@@ -81,17 +74,17 @@ searchButton.onclick = async function(event) {
         }
         
         const button = document.createElement("button");
-        button.className = "player";
+        button.className = "superLongWidth player";
         
         button.innerHTML = `
-            <div class="left">
-                <img src="https://flagsapi.com/${JSON.parse(user["metadata"])["country"]}/flat/64.png">
+            <div class="horizontal textLeft">
+                <img class="smallSize" src="https://flagsapi.com/${JSON.parse(user["metadata"])["country"]}/flat/64.png">
                 <span>${user["rank"]}</span>
             </div>
-            <span>${user["username"]}</span>
-            <div class="right">
+            <span class="smallFont">${user["username"]}</span>
+            <div class="horizontal textRight">
                 <span>${user["score"]}</span>
-                <img src="${rankImageSrc}">
+                <img class="smallSize" src="${rankImageSrc}">
             </div>
         `;
         
@@ -116,5 +109,7 @@ if (urlSearchParams.has("type")) {
     const leaderboardType = urlSearchParams.get("type");
     type.value = leaderboardType;
     
-    await searchButton.onclick();
+    await type.onchange();
+} else {
+    await type.onchange();
 }
