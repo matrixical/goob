@@ -537,5 +537,10 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
         .player {
             min-width: 150px;
         }
+        
+        #awardsGrid img {
+            max-width: 32px;
+            max-height: 32px;
+        }
     }
 }
