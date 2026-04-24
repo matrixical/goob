@@ -77,6 +77,10 @@ button, input, select {
     min-height: 50px;
 }
 
+select {
+    min-height: 35px;
+}
+
 button:hover, select:hover {
     background-color: #60acf4;
 }
@@ -283,6 +287,10 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
     align-items: center;
 }
 
+#playerInfoPanel {
+    justify-content: center;
+}
+
 .playerInfo {
     gap: 0px;
     min-width: 0;
@@ -291,10 +299,6 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
 
 .playerInfo span {
     white-space: nowrap;
-}
-
-.goober {
-    max-width: 200px;
 }
 
 
@@ -509,10 +513,6 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
         
         span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
             font-size: xx-small;
-        }
-    
-        .goober {
-            max-width: 50px;
         }
         
         #playerSearch, #levelResults {

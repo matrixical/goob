@@ -112,4 +112,5 @@ if (urlSearchParams.has("type")) {
     await type.onchange();
 } else {
     await type.onchange();
+    deleteUrlParameter("type");
 }
