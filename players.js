@@ -1,4 +1,5 @@
 import { api } from "./api.js";
+import { Helper } from "./helper.js"
 
 
 const searchList = document.getElementById("playerSearch");
@@ -14,7 +15,7 @@ searchPlayer.onclick = async function(event) {
     searchList.appendChild(loading);
     
     const users = {};
-    if (api.isValidUuid(uuidOrUsername.value)) {
+    if (Helper.isValidUuid(uuidOrUsername.value)) {
         const user = await api.getUser(uuidOrUsername.value);
         users[uuidOrUsername.value] = user["username"]
     } else {
@@ -64,7 +65,9 @@ const usernameLabel = document.getElementById("playerUsername");
 const uuidLabel = document.getElementById("playerUuid");
 const levelLabel = document.getElementById("playerLevel");
 const createTimeLabel = document.getElementById("playerCreateTime");
+const createTimeHoverLabel = document.getElementById("playerCreateTimeHover");
 const lastSeenLabel = document.getElementById("playerLastSeen");
+const lastSeenHoverLabel = document.getElementById("playerLastSeenHover");
 const currentWinstreakLabel = document.getElementById("playerCurrentWinstreak");
 const highestWinstreakLabel = document.getElementById("playerHighestWinstreak");
 const gamesLabel = document.getElementById("playerGames");
@@ -105,8 +108,13 @@ export async function showPlayerInfo(uuid) {
     usernameLabel.textContent = user["display_name"];
     uuidLabel.textContent = user["id"];
     levelLabel.textContent = user["level"];
-    createTimeLabel.textContent = `${user["create_time"].split("T")[0]} @ ${user["create_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
-    lastSeenLabel.textContent = `${user["update_time"].split("T")[0]} @ ${user["update_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
+    createTimeLabel.textContent = Helper.timeAgo(user["create_time"]);
+    createTimeHoverLabel.textContent = `${user["create_time"].split("T")[0]} @ ${user["create_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
+    lastSeenLabel.textContent = Helper.timeAgo(user["update_time"]);
+    lastSeenHoverLabel.textContent = `${user["update_time"].split("T")[0]} @ ${user["update_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
     currentWinstreakLabel.textContent = user["stats"]["CurrentWinstreak"] ?? 0;
     highestWinstreakLabel.textContent = user["stats"]["Winstreak"] ?? 0;
     gamesLabel.textContent = user["stats"]["GamesPlayed"] ?? 0;
@@ -162,7 +170,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 if (urlSearchParams.has("player")) {
     const uuid = urlSearchParams.get("player");
     
-    if (api.isValidUuid(uuid)) {
+    if (Helper.isValidUuid(uuid)) {
         await showPlayerInfo(uuid);
     }
 }

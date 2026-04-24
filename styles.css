@@ -418,6 +418,28 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
 }
 
 
+/* Hover */
+.hover {
+    position: relative;
+    display: inline-flex;
+}
+
+.hover .hoverText {
+    visibility: hidden;
+    opacity: 0;
+    background-color: #00488f;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    padding: 5px;
+}
+
+.hover:hover .hoverText {
+    visibility: visible;
+    opacity: 1;
+}
+
+
 @media screen and (max-aspect-ratio: 4/5) {
     *, *::before, *::after {
         font-size: medium;

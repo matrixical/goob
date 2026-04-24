@@ -1,6 +1,7 @@
 import { api } from "./api.js";
 import { NoRecordsFoundError } from "./errors.js";
 import { enableAllButtons, showPlayerInfo } from "./players.js";
+import { Helper } from "./helper.js"
 
 
 const searchQueryLabel = document.getElementById("searchQueryLabel");
@@ -103,43 +104,6 @@ const decimal = new Intl.NumberFormat("en-US", {
 });
 
 
-function timeAgo(isoDate) {
-    const seconds = Math.floor((Date.now() - new Date(isoDate)) / 1000);
-    if (seconds < 60) {
-        return seconds === 1 ? "1 second ago" : `${seconds} seconds ago`;
-    }
-    
-    const minutes = Math.floor(seconds / 60);
-    if (minutes < 60) {
-        return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
-    }
-    
-    const hours = Math.floor(minutes / 60);
-    if (hours < 24) {
-        return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
-    }
-    
-    const days = Math.floor(hours / 24);
-    
-    if (days < 7) {
-        return days === 1 ? "1 day ago" : `${days} days ago`;
-    }
-    
-    if (days < 30) {
-        const weeks = Math.floor(days / 7);
-        return weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
-    }
-    
-    if (days < 365) {
-        const months = Math.floor(days / 30);
-        return months === 1 ? "1 month ago" : `${months} months ago`;
-    }
-    
-    const years = Math.floor(days / 365);
-    return years === 1 ? "1 year ago" : `${years} years ago`;
-}
-
-
 const buttons = [];
 
 
@@ -185,7 +149,7 @@ function loadLevels(levels) {
                 <span class="smallFont">${level["game_mode"]} (${level["player_count"]})</span>
             </div>
             <div class="vertical textRight">
-                <span class="smallFont">${timeAgo(level["update_time"])}</span>
+                <span class="smallFont">${Helper.timeAgo(level["update_time"])}</span>
                 ${ratingHTML}
             </div>
         `;
@@ -214,7 +178,9 @@ const levelIdLabel = document.getElementById("levelLevelId");
 const creatorNameLabel = document.getElementById("levelCreatorName");
 const creatorIdLabel = document.getElementById("levelCreatorId");
 const createTimeLabel = document.getElementById("levelCreateTime");
+const createTimeHoverLabel = document.getElementById("levelCreateTimeHover");
 const lastUpdateLabel = document.getElementById("levelLastUpdate");
+const lastUpdateHoverLabel = document.getElementById("levelLastUpdateHover");
 const playerCountLabel = document.getElementById("levelPlayerCount");
 const themeLabel = document.getElementById("levelTheme");
 const statusLabel = document.getElementById("levelStatus");
@@ -235,8 +201,13 @@ async function showLevelInfo(uuid, level) {
     levelIdLabel.textContent = level["id"];
     creatorNameLabel.textContent = level["author_name"];
     creatorIdLabel.textContent = level["author_id"];
-    createTimeLabel.textContent = `${level["create_time"].split("T")[0]} @ ${level["create_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
-    lastUpdateLabel.textContent = `${level["update_time"].split("T")[0]} @ ${level["update_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
+    createTimeLabel.textContent = Helper.timeAgo(level["create_time"])
+    createTimeHoverLabel.textContent = `${level["create_time"].split("T")[0]} @ ${level["create_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
+    lastUpdateLabel.textContent = Helper.timeAgo(level["update_time"])
+    lastUpdateHoverLabel.textContent = `${level["update_time"].split("T")[0]} @ ${level["update_time"].split("T")[1].slice(0, -1)} UTC (YYYY/MM/DD)`;
+    
     playerCountLabel.textContent = level["player_count"];
     themeLabel.textContent = capitalize(level["theme"]);
     statusLabel.textContent = level["published"] == "Curated" ? "Certified" : level["published"];
@@ -253,7 +224,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 if (urlSearchParams.has("level")) {
     const uuid = urlSearchParams.get("level");
     
-    if (api.isValidUuid(uuid)) {
+    if (Helper.isValidUuid(uuid)) {
         await showLevelInfo(uuid);
     }
 }
