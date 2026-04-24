@@ -1,0 +1,162 @@
+{
+    "dev": {
+        "description": "Developer of Goober Dash!",
+        "name": "Developer"
+    },
+    "betatester": {
+        "description": "Beta tester in our game, thanks!",
+        "name": "Beta Tester"
+    },
+    "dailyx100": {
+        "description": "Play the game 100 days in a row",
+        "name": "Unfrigginbelievable!"
+    },
+    "dailyx3": {
+        "description": "Play the game 3 days in a row",
+        "name": "Play Streak"
+    },
+    "dailyx30": {
+        "description": "Play the game 30 days in a row",
+        "name": "Hardcore"
+    },
+    "dailyx7": {
+        "description": "Play the game 7 days in a row",
+        "name": "Week Warrior"
+    },
+    "dash1000x": {
+        "description": "Dash 1000 times",
+        "name": "Dash Master"
+    },
+    "dash100x": {
+        "description": "Dash 100 times",
+        "name": "Dash Fiend"
+    },
+    "dash500x": {
+        "description": "Dash 500 times",
+        "name": "Dash Pro"
+    },
+    "dash50x": {
+        "description": "Dash 50 times",
+        "name": "Dasher"
+    },
+    "deatheater": {
+        "description": "Die 100 times",
+        "name": "Death Eater"
+    },
+    "devslayer": {
+        "description": "Beat a developer in a game.",
+        "name": "Devslayer!"
+    },
+    "finisher": {
+        "description": "Completed a game.",
+        "name": "Finisher"
+    },
+    "finisherx10": {
+        "description": "Completed 10 games.",
+        "name": "Gettin' There"
+    },
+    "finisherx100": {
+        "description": "Completed 100 games.",
+        "name": "The Centurion"
+    },
+    "finisherx1000": {
+        "description": "Completed 1000 games.",
+        "name": "The Millennial"
+    },
+    "finishfirstx1": {
+        "description": "Finished a game in first place",
+        "name": "Finish First!"
+    },
+    "finishfirstx10": {
+        "description": "Finished 10 games in first place",
+        "name": "Finish First x10!"
+    },
+    "finishfirstx100": {
+        "description": "Finished 100 games in first place",
+        "name": "Finish First x100!"
+    },
+    "finishfirstx1000": {
+        "description": "Finished 1000 games in first place",
+        "name": "Finish First x1000!"
+    },
+    "juggernaut": {
+        "description": "Win a game without dying",
+        "name": "Clean Victory"
+    },
+    "perfectprizeround": {
+        "description": "Win every round in a prize round.",
+        "name": "Perfect Prize Round"
+    },
+    "seasonglobalrank1": {
+        "description": "Finished a season in first place globally",
+        "name": "Beast!"
+    },
+    "seasonglobalrank10": {
+        "description": "Finished a season in the top 10 globally",
+        "name": "Top 10!"
+    },
+    "seasonglobalrank100": {
+        "description": "Finished a season in the top 100 globally",
+        "name": "Top 100!"
+    },
+    "seasonglobalrank1000": {
+        "description": "Finished a season in the top 1000 globally",
+        "name": "Top 1000!"
+    },
+    "seasonglobalrank50": {
+        "description": "Finished a season in the top 50 globally",
+        "name": "Top 50!"
+    },
+    "seasonglobalrank500": {
+        "description": "Finished a season in the top 500 globally",
+        "name": "Top 500!"
+    },
+    "seasonglobalrank5000": {
+        "description": "Finished a season in the top 5000 globally",
+        "name": "Top 5000!"
+    },
+    "seasonlocalrank1": {
+        "description": "Finished a season in first place in a country",
+        "name": "Local Beast!"
+    },
+    "seasonlocalrank10": {
+        "description": "Finished a season in the top 10 in a country",
+        "name": "Top 10 Local!"
+    },
+    "seasonlocalrank100": {
+        "description": "Finished a season in the top 100 in a country",
+        "name": "Top 100 Local!"
+    },
+    "seasonlocalrank1000": {
+        "description": "Finished a season in the top 1000 in a country",
+        "name": "Top 1000 Local!"
+    },
+    "seasonlocalrank50": {
+        "description": "Finished a season in the top 50 in a country",
+        "name": "Top 50 Local!"
+    },
+    "seasonlocalrank500": {
+        "description": "Finished a season in the top 500 in a country",
+        "name": "Top 500 Local!"
+    },
+    "seasonlocalrank5000": {
+        "description": "Finished a season in the top 5000 in a country",
+        "name": "Top 5000 Local!"
+    },
+    "winstreakx2": {
+        "description": "Win 2 games in a row.",
+        "name": "Winstreak"
+    },
+    "winstreakx3": {
+        "description": "Win 3 games in a row.",
+        "name": "Trips"
+    },
+    "winstreakx4": {
+        "description": "Win 4 games in a row.",
+        "name": "Quads"
+    },
+    "winstreakx5": {
+        "description": "Win 5 games in a row.",
+        "name": "Friggin Amazing"
+    }
+}

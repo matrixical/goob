@@ -96,6 +96,8 @@ const developerUuids = [
     "4fe69bd2-4293-435d-bef1-c405688ee6d8", // TEKNO
 ];
 
+const awardDescriptions = await (await fetch("awards/descriptions.json")).json();
+
 
 export async function showPlayerInfo(uuid) {
     setUrlParameter("player", uuid);
@@ -152,7 +154,7 @@ export async function showPlayerInfo(uuid) {
 
 function addAward(awardName, awardData) {
     const award = document.createElement("div");
-    award.className = "award";
+    award.className = "award hover";
     
     const awardImage = document.createElement("img");
     awardImage.src = `awards/${awardName}.png`;
@@ -161,6 +163,11 @@ function addAward(awardName, awardData) {
     const awardText = document.createElement("span");
     awardText.textContent = `x${awardData["count"]}`;
     award.appendChild(awardText);
+    
+    const awardHoverText = document.createElement("span");
+    awardHoverText.className = "smallFont hoverText"
+    awardHoverText.textContent = awardDescriptions[awardName]["name"];
+    award.appendChild(awardHoverText);
     
     awardsGrid.appendChild(award);
 }
