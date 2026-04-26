@@ -64,6 +64,7 @@ div, span, input, button {
     border: none;
     outline-width: 5px;
     outline-color: #ffffff;
+    touch-action: manipulation;
 }
 
 select, ::picker(select) {
@@ -159,6 +160,7 @@ input::placeholder {
     align-items: center;
     flex-direction: column;
     padding: 50px;
+    padding-bottom: 150px;
     width: 100vw;
     height: 100dvh;
 }
@@ -500,7 +502,8 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
     
     @media (pointer: coarse) {
         .scene {
-            padding: 20px;
+            padding: 10px;
+            padding-bottom: 70px;
         }
         
         *, *::before, *::after {
@@ -534,6 +537,10 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
             top: calc(100dvh - 50px);
         }
         
+        #sceneButtons button {
+            min-width: 50px;
+        }
+        
         span.bigFont.bigFont, label.bigFont.bigFont, input.bigFont.bigFont {
             font-size: small;
         }
@@ -563,6 +570,15 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
         
         .player {
             min-width: 150px;
+        }
+        
+        #awardsGrid img {
+            max-width: 32px;
+            max-height: 32px;
+        }
+        
+        .horizontal {
+            gap: 10px;
         }
     }
 }
