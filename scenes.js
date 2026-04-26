@@ -38,9 +38,21 @@ sceneButtonLevels.onclick = function(event) {
 };
 
 
+const sceneButtonTimeTrials = document.getElementById("sceneButtonTimeTrials");
+sceneButtonTimeTrials.onclick = function(event) {
+    sceneRow.style.transform = "translateX(-200vw)";
+    
+    setUrlParameter("scene", "timeTrials");
+    
+    deleteUrlParameter("player", "");
+    deleteUrlParameter("level", "");
+    deleteUrlParameter("type", "");
+};
+
+
 const sceneButtonCrowns = document.getElementById("sceneButtonCrowns");
 sceneButtonCrowns.onclick = function(event) {
-    sceneRow.style.transform = "translateX(-200vw)";
+    sceneRow.style.transform = "translateX(-300vw)";
     
     setUrlParameter("scene", "crowns");
     
@@ -61,8 +73,12 @@ if (urlSearchParams.has("scene")) {
         case "levels":
             sceneRow.style.transform = "translateX(-100vw)";
             break;
-        case "crowns":
+        case "timetrials":
+            console.log("asdf")
             sceneRow.style.transform = "translateX(-200vw)";
+            break
+        case "crowns":
+            sceneRow.style.transform = "translateX(-300vw)";
             break;
         default:
             break;

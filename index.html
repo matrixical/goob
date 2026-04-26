@@ -96,42 +96,55 @@
                         </div>
                     </div>
                     
-                    <div id="sceneLevelsRight" class="horizontal splitRight panel">
-                        <div class="textRight levelInfo vertical">
-                            <span>Name:</span>
-                            <span class="smallFont">UUID / Level ID:</span>
-                            <span>Creator Name:</span>
-                            <span class="smallFont">UUID / Creator ID:</span>
-                            <span class="smallFont">Create Time:</span>
-                            <span class="smallFont">Last Update:</span>
-                            <span>Player Count:</span>
-                            <span>Theme:</span>
-                            <span>Status:</span>
-                            <span>Gamemode:</span>
-                            <span>Rating:</span>
-                            <span>Rating Count:</span>
-                        </div>
-                        
-                        <div class="textLeft levelInfo vertical">
-                            <span id="levelName"></span>
-                            <span id="levelLevelId" class="smallFont"></span>
-                            <span id="levelCreatorName"></span>
-                            <span id="levelCreatorId" class="smallFont"></span>
-                            <div class="hover">
-                                <span id="levelCreateTime" class="smallFont"></span>
-                                <span id="levelCreateTimeHover" class="smallFont hoverText">test</span>
+                    <div id="sceneLevelsRight" class="vertical splitRight panel">
+                        <button id="viewTimeTrial" hidden="true">View Time Trial</button>
+                        <div class="horizontal">
+                            <div class="textRight levelInfo vertical">
+                                <span>Name:</span>
+                                <span class="smallFont">UUID / Level ID:</span>
+                                <span>Creator Name:</span>
+                                <span class="smallFont">UUID / Creator ID:</span>
+                                <span class="smallFont">Create Time:</span>
+                                <span class="smallFont">Last Update:</span>
+                                <span>Player Count:</span>
+                                <span>Theme:</span>
+                                <span>Status:</span>
+                                <span>Gamemode:</span>
+                                <span>Rating:</span>
+                                <span>Rating Count:</span>
                             </div>
-                            <div class="hover">
-                                <span id="levelLastUpdate" class="smallFont"></span>
-                                <span id="levelLastUpdateHover" class="smallFont hoverText">test</span>
+                            
+                            <div class="textLeft levelInfo vertical">
+                                <span id="levelName"></span>
+                                <span id="levelLevelId" class="smallFont"></span>
+                                <span id="levelCreatorName"></span>
+                                <span id="levelCreatorId" class="smallFont"></span>
+                                <div class="hover">
+                                    <span id="levelCreateTime" class="smallFont"></span>
+                                    <span id="levelCreateTimeHover" class="smallFont hoverText">test</span>
+                                </div>
+                                <div class="hover">
+                                    <span id="levelLastUpdate" class="smallFont"></span>
+                                    <span id="levelLastUpdateHover" class="smallFont hoverText">test</span>
+                                </div>
+                                <span id="levelPlayerCount"></span>
+                                <span id="levelTheme"></span>
+                                <span id="levelStatus"></span>
+                                <span id="levelGamemode"></span>
+                                <span id="levelRating"></span>
+                                <span id="levelRatingCount"></span>
                             </div>
-                            <span id="levelPlayerCount"></span>
-                            <span id="levelTheme"></span>
-                            <span id="levelStatus"></span>
-                            <span id="levelGamemode"></span>
-                            <span id="levelRating"></span>
-                            <span id="levelRatingCount"></span>
                         </div>
+                    </div>
+                </div>
+                
+                <div id="sceneTimeTrials" class="scene">
+                    <div class="vertical panel">
+                        <input id="uuidTimeTrial" class="longWidth smallFont" type="text" placeholder="UUID / Level ID Here...">
+                        <button id="searchTimeTrial" class="longWidth">Search</button>
+                        <label id="limitLabelTimeTrial" class="longWidth" for="limit">Limit (Player Count)</label>
+                        <input id="limitTimeTrial" class="longWidth bigFont" type="number" min="1" max="2500" value="25" step="5">
+                        <div id="timeTrialResults" class="vertical panel"></div>
                     </div>
                 </div>
                 
@@ -152,12 +165,14 @@
             <div id="sceneButtons">
                 <button id="sceneButtonPlayers">Players</button>
                 <button id="sceneButtonLevels">Levels</button>
+                <button id="sceneButtonTimeTrials">Time Trials</button>
                 <button id="sceneButtonCrowns">Crowns</button>
             </div>
         </div>
         <script src="scenes.js"></script>
         <script type="module" src="players.js"></script>
         <script type="module" src="levels.js"></script>
+        <script type="module" src="timeTrials.js"></script>
         <script type="module" src="crowns.js"></script>
     </body>
 </html>

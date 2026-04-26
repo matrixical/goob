@@ -1,5 +1,6 @@
 import { api } from "./api.js";
 import { Helper } from "./helper.js"
+import { createUser } from "./users.js"
 
 
 const searchList = document.getElementById("playerSearch");
@@ -32,15 +33,9 @@ searchPlayer.onclick = async function(event) {
     
     for (const uuid in users) {
         const username = users[uuid];
-        
-        const userButton = document.createElement("button");
-        userButton.className = "player";
-        
-        const name = document.createElement("span");
-        name.textContent = username;
-        userButton.appendChild(name);
-        
+        const userButton = createUser(username);
         searchList.appendChild(userButton);
+        
         buttons.push(userButton);
         
         userButton.onclick = async function(event) {

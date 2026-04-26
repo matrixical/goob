@@ -2,6 +2,7 @@ import { api } from "./api.js";
 import { NoRecordsFoundError } from "./errors.js";
 import { enableAllButtons, showPlayerInfo } from "./players.js";
 import { Helper } from "./helper.js"
+import { loadTimeTrialLeaderboard } from "./timeTrials.js";
 
 
 const searchQueryLabel = document.getElementById("searchQueryLabel");
@@ -173,6 +174,8 @@ function capitalize(string) {
 }
 
 
+const viewTimeTrial = document.getElementById("viewTimeTrial");
+
 const nameLabel = document.getElementById("levelName");
 const levelIdLabel = document.getElementById("levelLevelId");
 const creatorNameLabel = document.getElementById("levelCreatorName");
@@ -195,6 +198,16 @@ async function showLevelInfo(uuid, level) {
     if (!level) {
         const levels = await api.queryLevelsSearch(uuid);
         level = levels[0];
+    }
+    
+    viewTimeTrial.hidden = false;
+    viewTimeTrial.onclick = async function(event) {
+        viewTimeTrial.disabled = true;
+        await loadTimeTrialLeaderboard(uuid);
+        viewTimeTrial.disabled = false;
+        
+        setUrlParameter("scene", "timeTrials");
+        sceneRow.style.transform = "translateX(-200vw)";
     }
     
     nameLabel.textContent = level["name"];
