@@ -15,6 +15,7 @@ class API {
     #websocket;
     #config;
     #cid;
+    #kaizoListUrl;
     
     constructor() {
         this.#httpsUrl = "https://gooberdash-api.winterpixel.io";
@@ -28,6 +29,8 @@ class API {
         this.#config = {};
         
         this.#cid = 1;
+        
+        this.#kaizoListUrl = "https://script.google.com/macros/s/AKfycbzPjH4be1-nYDoJsCGc6mY2G6KuB70esS_HLSvCByvqwYL054PQkYuNcMYS7UeD_reJ/exec";
     }
     
     
@@ -629,6 +632,22 @@ class API {
         return response["records"];
     }
     //endregion
+    
+    
+    //region Kaizos
+    /**
+     * @returns {Promise<Array>}
+     */
+    async getKaizoList() {
+        const response = await fetch(this.#kaizoListUrl);
+        
+        if (!response.ok) {
+            throw new RequestError("Error while sending HTTPS request!")
+        }
+        
+        const json = await response.json();
+        return json;
+    }
 }
 
 

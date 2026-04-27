@@ -62,6 +62,19 @@ sceneButtonCrowns.onclick = function(event) {
 };
 
 
+const sceneButtonKaizos = document.getElementById("sceneButtonKaizos");
+sceneButtonKaizos.onclick = function(event) {
+    sceneRow.style.transform = "translateX(-400vw)";
+    
+    setUrlParameter("scene", "kaizos");
+    
+    deleteUrlParameter("player", "");
+    deleteUrlParameter("level", "");
+    deleteUrlParameter("type", "");
+};
+
+
+
 const urlSearchParams = new URLSearchParams(window.location.search);
 if (urlSearchParams.has("scene")) {
     const sceneName = urlSearchParams.get("scene").toLowerCase();
@@ -79,6 +92,9 @@ if (urlSearchParams.has("scene")) {
             break
         case "crowns":
             sceneRow.style.transform = "translateX(-300vw)";
+            break;
+        case "kaizos":
+            sceneRow.style.transform = "translateX(-400vw)";
             break;
         default:
             break;

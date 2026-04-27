@@ -142,7 +142,7 @@
                     <div class="vertical panel">
                         <input id="uuidTimeTrial" class="longWidth smallFont" type="text" placeholder="UUID / Level ID Here...">
                         <button id="searchTimeTrial" class="longWidth">Search</button>
-                        <label id="limitLabelTimeTrial" class="longWidth" for="limit">Limit (Player Count)</label>
+                        <label class="longWidth" for="limit">Limit (Player Count)</label>
                         <input id="limitTimeTrial" class="longWidth bigFont" type="number" min="1" max="2500" value="25" step="5">
                         <div id="timeTrialResults" class="vertical panel"></div>
                     </div>
@@ -160,6 +160,20 @@
                         <div id="crownResults" class="vertical panel"></div>
                     </div>
                 </div>
+                
+                <div id="sceneKaizos" class="scene">
+                    <div id="kaizosLoading" class="loading"></div>
+                    <div class="vertical panel">
+                        <span class="bigFont">Kaizo List</span>
+                        <span class="smallFont">A list of the hardest legitimately beaten levels in Goober Dash</span>
+                        <span class="smallFont">Managed by twilightphi, Everblaze JDA, and Worldx</span>
+                        <div class="horizontal">
+                            <button id="kaizoDiscordButton">Kaizo List Discord</button>
+                            <button id="kaizoListButton">Official Kaizo List</button>
+                        </div>
+                        <div id="kaizoResults" class="vertical panel"></div>
+                    </div>
+                </div>
             </div>
             
             <div id="sceneButtons">
@@ -167,6 +181,7 @@
                 <button id="sceneButtonLevels">Levels</button>
                 <button id="sceneButtonTimeTrials">Time Trials</button>
                 <button id="sceneButtonCrowns">Crowns</button>
+                <button id="sceneButtonKaizos">Kaizos</button>
             </div>
         </div>
         <script src="scenes.js"></script>
@@ -174,5 +189,6 @@
         <script type="module" src="levels.js"></script>
         <script type="module" src="timeTrials.js"></script>
         <script type="module" src="crowns.js"></script>
+        <script type="module" src="kaizos.js"></script>
     </body>
 </html>

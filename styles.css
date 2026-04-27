@@ -378,7 +378,7 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
 
 
 /* Crowns */
-#crownResults, #timeTrialResults {
+#crownResults, #timeTrialResults, #kaizoResults {
     width: 550px;
     height: 100%;
     max-height: 500px;
@@ -555,7 +555,7 @@ span.smallFont.smallFont, label.smallFont.smallFont, input.smallFont.smallFont {
             gap: 20px;
         }
         
-        #crownResults, #timeTrialResults {
+        #crownResults, #timeTrialResults, #kaizoResults {
             width: 275px;
         }
         
